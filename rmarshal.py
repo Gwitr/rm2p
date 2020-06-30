@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from subprocess import PIPE, Popen
 
@@ -55,7 +56,7 @@ SPECIAL_CLASS_MAP = {
 }
 
 def callruby(path):
-    p = Popen(["ruby", "c:\\users\\gwitr\\desktop\\programming\\ruby\\extract_rxdata.rb", path], stdout=PIPE)
+    p = Popen(["ruby", os.path.join(os.path.dirname(__file__), "extract_rxdata.rb"), path], stdout=PIPE)
     return p.communicate()[0]
 
 def _unserialize_obj(x, classname):
