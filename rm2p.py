@@ -3,7 +3,7 @@ import numpy as np
 from subprocess import PIPE, Popen
 
 """
-# rmarshal
+# rm2p
 A module designed to read Ruby marshal files
 
 This module contains exposes 2 important objects:
@@ -22,26 +22,30 @@ Throws:
 * FileNotFoundError - Ruby interpreter not installed
 * RuntimeError - An unknown error occured, perhaps there's something wrong with the supplied file
 
-## RubyObject
+## class RubyObject()
 A generic ruby object type.
 
 ### rclass
 Contains the ruby class name of the object, as a string.
 
-### __repr__()
+### \_\_repr\_\_()
 Arguments:
 * N/A
+
 Returns:
 * A string
+
 Throws:
 * N/A
+
 Returns a ruby-like representation of an object.
 
 Example:
 ```python
 >>> obj = unmarshal(filepath)
 >>> obj
-#<RPG::Map:0x00000000951fa8b7>```
+#<RPG::Map:0x00000000951fa8b7>
+```
 """
 
 class RubyObject():
@@ -201,7 +205,10 @@ def _unserialize(x):
         return res, i
 
 def unmarshal(path):
-    res = callruby("D:\\Steam\\Steamapps\\common\\OneShot\\Data\\Map020.rxdata")
+    res = callruby(path)
     if len(res) == 0:
         raise RuntimeError
     return _unserialize(res.decode("utf8"))[0]
+
+if __name__ == "__main__":
+    res = unmarshal("D:\\Steam\\Steamapps\\common\\OneShot\\Data\\Map020.rxdata")
