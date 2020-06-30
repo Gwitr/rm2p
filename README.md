@@ -15,11 +15,13 @@ RXDATA files from RPGMaker XP
 ### unmarshal(path)
 Arguments:
 * path - a path to a file that contains a marshaled Ruby object
+
 Returns:
 * A list
 * An integer
 * A string
 * A RubyObject instance
+
 Throws:
 * FileNotFoundError - Ruby interpreter not installed
 * RuntimeError - An unknown error occured, perhaps there's something wrong with the supplied file
