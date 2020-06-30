@@ -1,11 +1,18 @@
 # rmarshal
+## General
 A module designed to read Ruby marshal files
 
 This module contains exposes 2 important objects:
 * The unmarshal function
 * The RubyObject type
 
-## unmarshal(path)
+## Supported file formats
+Any file with data created by Marshal.load()
+
+RXDATA files from RPGMaker XP
+
+## Documentation
+### unmarshal(path)
 Arguments:
 * path - a path to a file that contains a marshaled Ruby object
 Returns:
@@ -17,13 +24,13 @@ Throws:
 * FileNotFoundError - Ruby interpreter not installed
 * RuntimeError - An unknown error occured, perhaps there's something wrong with the supplied file
 
-## class RubyObject()
+### class RubyObject()
 A generic ruby object type.
 
-### rclass
+#### rclass
 Contains the ruby class name of the object, as a string.
 
-### \_\_repr\_\_()
+#### \_\_repr\_\_()
 Arguments:
 * N/A
 
