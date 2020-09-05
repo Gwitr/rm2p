@@ -1,6 +1,5 @@
-"""Here be dragons."""
-
 import os
+import warnings
 import numpy as np
 from subprocess import PIPE, Popen
 

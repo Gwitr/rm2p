@@ -1,0 +1,6 @@
+build
+dist
+rm2p_gwitr.egg-info
+build/*
+dist/*
+rm2p_gwitr.egg-info/*
