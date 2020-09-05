@@ -1,4 +1,4 @@
-# rmarshal
+# rm2p
 ## General
 A module designed to read Ruby marshal files
 

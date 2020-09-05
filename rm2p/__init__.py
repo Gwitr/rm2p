@@ -4,6 +4,8 @@ import os
 import numpy as np
 from subprocess import PIPE, Popen
 
+RUBY_EXEC = None
+
 class RubyObject():
 
     def __repr__(self):
@@ -16,8 +18,17 @@ SPECIAL_CLASS_MAP = {
 }
 
 def callruby(path):
-    p = Popen(["ruby", os.path.join(os.path.dirname(__file__), "extract_rxdata.rb"), path], stdout=PIPE)
+    global RUBY_EXEC
+    if RUBY_EXEC is None:
+        # raise ValueError("Ruby executable not set, use set_ruby_executable(path)")
+        warnings.warn(UserWarning("set_ruby_executable(...) wasn't called, guessing 'ruby'"))
+        RUBY_EXEC = "ruby"
+    p = Popen([RUBY_EXEC, os.path.join(os.path.dirname(__file__), "extract_rxdata.rb"), path], stdout=PIPE)
     return p.communicate()[0]
+
+def set_ruby_executable(p):
+    global RUBY_EXEC
+    RUBY_EXEC = p
 
 def _unserialize_obj(x, classname):
     # print(x[:128])
